@@ -1,0 +1,27 @@
+.filterItem {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid black;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+.filterItemContent {
+    display: flex;
+    width: 20px;
+}
+
+.title{}
+.filter, .sort{
+    display: flex;
+    justify-content: center;
+}
+
+.sortItem {
+    padding: 5px 10px;
+}
+.sortItemContent {
+
+}
