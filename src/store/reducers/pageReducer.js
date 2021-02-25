@@ -3,8 +3,9 @@ const SET_NEWS_FEED = 'SET_NEWS_FEED'
 
 
 const initialState = {
-    groupsData: null,   //array
-    newsFeed: null  //array
+    groupsData: [],   //array
+    newsFeed: [], //array
+    searchGroupMode: true
 }
 
 export function pageReducer(state = initialState, action) {
@@ -13,13 +14,13 @@ export function pageReducer(state = initialState, action) {
         case SET_GROUPS:
             return {...state,
                 groupsData: [...action.groupsData],
-                currentGroup: null
+                searchGroupMode: true
             }
 
         case SET_NEWS_FEED:
             return {...state,
-                groupsData: null,
-                newsFeed: action.newsFeed
+                newsFeed: action.newsFeed,
+                searchGroupMode: false
             }
 
         default:

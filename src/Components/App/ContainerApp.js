@@ -10,7 +10,8 @@ const mapStateToProps = state => ({
     userName: state.login.user,
     isAuth: state.login.isAuth,
     groupsData: state.page.groupsData,
-    newsFeed: state.page.newsFeed
+    newsFeed: state.page.newsFeed,
+    searchGroupMode: state.page.searchGroupMode
 })
 const mapDispatchToProps = {login, logout, getGroups, getNewsFeed }
 

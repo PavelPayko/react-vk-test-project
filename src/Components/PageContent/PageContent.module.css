@@ -1,0 +1,30 @@
+.postInfoImg {
+    width: 20px;
+    margin-right: 5px;
+}
+.postInfo{
+    display: flex;
+    margin-right: 10px;
+}
+.postInfo:last-child {
+    margin: 0;
+}
+.postInfoWrapper{
+    display: flex;
+    justify-content: space-between;
+}
+.postWrapper {
+    padding: 20px 40px;
+}
+.date {
+
+}
+.interaction {
+    display: flex;
+
+}
+.attachments {
+    display: grid;
+     grid-template-columns: 1fr 1fr 1fr;
+     grid-gap: 5px;
+}

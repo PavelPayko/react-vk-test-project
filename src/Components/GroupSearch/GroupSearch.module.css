@@ -1,0 +1,11 @@
+.itemWrapper {
+    display: flex;
+    width: 50%;
+    margin: 0 auto;
+    justify-content: space-evenly;
+}
+.itemDescription {
+    display: flex;
+    flex-direction: column;
+    justify-self: flex-start;
+}

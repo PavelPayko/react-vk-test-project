@@ -3,6 +3,7 @@ import './App.css';
 import Header from "../Header/Header";
 import Controls from "../Controls/Controls";
 import PageContent from "../PageContent/PageContent";
+import GroupSearch from "../GroupSearch/GroupSearch";
 
 function App(props) {
     return (
@@ -13,11 +14,14 @@ function App(props) {
                     isAuth={props.isAuth}
             />
             <Controls/>
-            <PageContent getGroups={props.getGroups}
-                         groupsData={props.groupsData}
-                         getNewsFeed={props.getNewsFeed}
-                         newsFeed={props.newsFeed}
-            />
+            {props.searchGroupMode
+                ? <GroupSearch getGroups={props.getGroups}
+                               groupsData={props.groupsData}
+                               getNewsFeed={props.getNewsFeed}
+                />
+                : <PageContent newsFeed={props.newsFeed}
+                />
+            }
         </div>
     );
 }
