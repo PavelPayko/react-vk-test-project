@@ -1,8 +1,5 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import './App.css';
-import {auth} from "../../API/API";
-import axios from "axios";
-import VK, {Auth} from 'react-vk';
 import Header from "../Header/Header";
 import Controls from "../Controls/Controls";
 import PageContent from "../PageContent/PageContent";
@@ -16,7 +13,11 @@ function App(props) {
                     isAuth={props.isAuth}
             />
             <Controls/>
-            <PageContent getGroups={props.getGroups}/>
+            <PageContent getGroups={props.getGroups}
+                         groupsData={props.groupsData}
+                         getNewsFeed={props.getNewsFeed}
+                         newsFeed={props.newsFeed}
+            />
         </div>
     );
 }

@@ -1,54 +1,69 @@
 const SET_GROUPS = 'SET_GROUPS'
-const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
-const LOGIN_FAIL = 'LOGIN_FAIL'
+const SET_NEWS_FEED = 'SET_NEWS_FEED'
+
 
 const initialState = {
-    user: 'User Name',
-    groupsData: []
+    groupsData: null,   //array
+    newsFeed: null  //array
 }
 
 export function pageReducer(state = initialState, action) {
     switch (action.type) {
+
         case SET_GROUPS:
-            return {...state, groupsData: [...action.groupsData]}
+            return {...state,
+                groupsData: [...action.groupsData],
+                currentGroup: null
+            }
 
-        case LOGIN_SUCCESS:
-            return {...state, isFetching: false, name: action.payload}
-
-        case LOGIN_FAIL:
-            return {...state, isFetching: false, error: action.payload.message}
+        case SET_NEWS_FEED:
+            return {...state,
+                groupsData: null,
+                newsFeed: action.newsFeed
+            }
 
         default:
             return state
     }
 }
 
-// ActionCreators
+// Action Creators
 
 const setGroupsAC = (groupsData) => ({
     type: SET_GROUPS,
     groupsData
 })
-const loginSuccessAC = (username) => ({
-    type: LOGIN_SUCCESS,
-    payload: username,
-})
-const loginFailAC = () => ({
-    type: LOGIN_FAIL,
-    error: true,
-    payload: new Error('Ошибка авторизации'),
+const setNewsFeedAC = (newsFeed) => ({
+    type: SET_NEWS_FEED,
+    newsFeed
 })
 
+// thunk creators
 export const getGroups = (query) => (dispatch) => {
     let groupsArr = []
     //eslint-disable-next-line no-undef
     VK.Api.call(
         'groups.search',
-        { q: query, sort: 0, v: '5.80' },
+        {q: query, sort: 0, v: '5.80'},
         r => {
             try {
                 groupsArr = groupsArr.concat(r.response.items)
                 dispatch(setGroupsAC(groupsArr))
+            } catch (e) {
+                console.log(e)
+            }
+        }
+    )
+}
+export const getNewsFeed = (groupId) => (dispatch) => {
+    //eslint-disable-next-line no-undef
+    VK.Api.call(
+        'wall.get',
+        {owner_id: "-"+groupId,count: 10, v: '5.80'},
+        response => {
+            try {
+                const newsFeed = response.response.items
+                dispatch(setNewsFeedAC(newsFeed))
             } catch (e) {
                 console.log(e)
             }
