@@ -8,22 +8,34 @@ import GroupSearch from "../GroupSearch/GroupSearch";
 function App(props) {
     return (
         <div className="App">
-            <Header name={props.name}
+            <Header name={props.userName}
                     login={props.login}
                     logout={props.logout}
                     isAuth={props.isAuth}
             />
-            <Controls/>
-            {props.searchGroupMode
-                ? <GroupSearch getGroups={props.getGroups}
-                               groupsData={props.groupsData}
-                               getNewsFeed={props.getNewsFeed}
+            <main>
+                <Controls currentGroupName={props.currentGroupName}
+                          searchGroupModeSwitch={props.searchGroupModeSwitch}
+                          sortNewsFeed={props.sortNewsFeedHandler}
+                          activeSortMethod={props.activeSortMethod}
+                          sortBy={props.sortBy}
+                          sortIcon={props.sortIcon}
+                          filterNewsFeed={props.filterNewsFeed}
+                          filteredBy={props.filteredBy}
                 />
-                : <PageContent newsFeed={props.newsFeed}
-                />
-            }
+                {props.searchGroupMode
+                    ? <GroupSearch getGroups={props.getGroups}
+                                   groupsData={props.groupsData}
+                                   getNewsFeed={props.getNewsFeed}
+                    />
+                    : <PageContent newsFeed={props.newsFeed}
+                                   filteredNewsFeed={props.filteredNewsFeed}
+                    />
+                }
+            </main>
         </div>
-    );
+    )
+        ;
 }
 
 export default App;

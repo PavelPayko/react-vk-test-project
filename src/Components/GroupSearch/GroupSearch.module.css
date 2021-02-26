@@ -1,11 +1,24 @@
 .itemWrapper {
     display: flex;
-    width: 50%;
-    margin: 0 auto;
-    justify-content: space-evenly;
 }
 .itemDescription {
     display: flex;
     flex-direction: column;
-    justify-self: flex-start;
+    margin-left: 40px;
+    align-items: flex-start;
+    justify-content: space-evenly;
+}
+.input {
+    width: 100%;
+    margin-right: 20px;
+    border-radius: 5px;
+    /* height: 2em; */
+    padding: 5px 10px;
+}
+.form {
+    display: flex;
+    margin-bottom: 20px;
+}
+.button {
+    border-radius: 5px;
 }
